@@ -9,7 +9,8 @@ const app = express();
 
 // Middleware
 app.use(cors({ origin: process.env.CORS_ORIGIN || "*", credentials: true }));
-app.use(express.json()); // Fix missing middleware
+app.use(express.json());  // Correct way to parse JSON requests
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
