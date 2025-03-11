@@ -9,3 +9,7 @@ CREATE TABLE schools (
     latitude FLOAT NOT NULL,
     longitude FLOAT NOT NULL
 );
+SHOW TABLES;
+DESC schools;
+SELECT * FROM schools;
+
