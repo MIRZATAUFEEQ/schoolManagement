@@ -10,6 +10,7 @@ app.use(cors({      //middleware
     credentials: true
 }))
 app.use(bodyParser.json());  //middleware for enable json parsing
+app.use(express.json())
 app.use(morgan("dev"));      //morgan middleware log http request
 
 import router from './routes/school.route.js'
