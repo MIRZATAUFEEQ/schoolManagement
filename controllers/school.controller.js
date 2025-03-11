@@ -19,8 +19,6 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 
 // Add a school
 const createSchool = asyncHandler(async (req, res) => {
-  console.log("🔹 Received Data:", req.body); // Debugging
-
   const { name, address, latitude, longitude } = req.body;
   const result = await addSchool(name, address, latitude, longitude);
   res.status(201).json(new ApiResponse(201, result.insertId, "School added successfully"));
