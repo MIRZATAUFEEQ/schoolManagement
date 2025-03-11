@@ -10,8 +10,7 @@ dotenv.config({
  */
 
 // const MYSQL_URL = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_PRIVATE_DOMAIN}:3306/${process.env.MYSQL_DATABASE}`
-const MYSQL_URL=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`
-// const MYSQL_URL = 'mysql://root:NMbWcXrbbtUzMFvvFksOscPcSpagPssI@mysql.railway.internal:3306/railway'
+const MYSQL_URL=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`
 const connectDB = async () => {
   try {
     const connection = await mysql.createConnection({
