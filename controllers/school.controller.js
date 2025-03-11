@@ -10,9 +10,9 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 };
@@ -20,7 +20,14 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 // Add a school
 const createSchool = asyncHandler(async (req, res) => {
   const { name, address, latitude, longitude } = req.body;
+  if (!name || !address || !latitude || !longitude) {
+      return res.status(400).json({ success: false, message: "All fields are required" });
+  }
   const result = await addSchool(name, address, latitude, longitude);
+  if (!result.insertId) {
+    return res.status(500).json({ success: false, message: "Failed to insert school" });
+  }
+
   res.status(201).json(new ApiResponse(201, result.insertId, "School added successfully"));
 });
 
