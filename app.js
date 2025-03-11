@@ -8,7 +8,12 @@ import errorHandler from "./middlewares/errorHandler.js";
 const app = express();
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN || "*", credentials: true }));
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}));
+
 app.use(express.json());  // Correct way to parse JSON requests
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
