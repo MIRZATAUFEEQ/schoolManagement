@@ -9,15 +9,12 @@ dotenv.config({
  * @returns {Promise<mysql.Connection>} The database connection instance.
  */
 
-const url = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_PRIVATE_DOMAIN}:3306/${process.env.MYSQL_DATABASE}`
+const MYSQL_URL = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_PRIVATE_DOMAIN}:3306/${process.env.MYSQL_DATABASE}`
 
 const connectDB = async () => {
   try {
     const connection = await mysql.createConnection({
-      url,
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
+      MYSQL_URL,
     });
 
     console.log(`✅ Database connected successfully! ${process.env.DB_USER}/${process.env.DB_HOST}/${process.env.DB_NAME}`);
